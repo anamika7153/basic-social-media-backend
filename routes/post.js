@@ -6,6 +6,10 @@ const dummyUsers = require("../dummydata/dummyUsers");
 const authenticateToken = require('../middlewares/authenticateToken')
 const router = express.Router();
 
+router.get("/", (req,res) => {
+  res.json("Welcome to Social Media Backend")
+})
+
 // Endpoint to add a new post
 router.post("/api/posts", authenticateToken, async (req, res) => {
   const { title, description } = req.body;
