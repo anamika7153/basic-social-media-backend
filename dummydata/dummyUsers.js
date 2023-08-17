@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 
 const dummyUsers = [
   { name: "Katherine Pierce", email: 'user1@example.com', password:'password1', id: "1", followers: 1, followings: 2},
