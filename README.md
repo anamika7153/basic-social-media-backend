@@ -64,3 +64,12 @@ docker build -t image_name .
 ```
 docker run -d -p 8080:8080 --name container_name image_name
 ```
+## Screenshots
+|||
+|---|---|
+| ![image](https://github.com/anamika7153/social-media-backend/assets/66116440/65024fb4-3be2-4e91-a78a-ceb4bbf5e7dc) | ![image](https://github.com/anamika7153/social-media-backend/assets/66116440/f736a971-b379-4157-8ef4-d87b4766e700) |
+| | |
+|![image](https://github.com/anamika7153/social-media-backend/assets/66116440/698c867c-52ca-49f6-a47d-aa1fd96b817d)|![image](https://github.com/anamika7153/social-media-backend/assets/66116440/d71e570e-8414-4b02-a192-1ab2d38001a6)|
+|||
+|![image](https://github.com/anamika7153/social-media-backend/assets/66116440/1145e66c-a962-4160-b0ac-2920caa252c7)|![image](https://github.com/anamika7153/social-media-backend/assets/66116440/31b6d156-0307-4794-afe4-948c3f9480e2)|
+
