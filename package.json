@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "npm i"
+    "build": "npm i",
+    "test": "mocha --exit"
   },
   "keywords": [],
   "author": "",

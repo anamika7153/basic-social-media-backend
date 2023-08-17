@@ -7,7 +7,7 @@ function authenticateToken(req, res, next) {
 
   jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) {
-      console.log("Token verification failed"); // Add this line
+      // console.log("Token verification failed"); // Add this line
       return res.sendStatus(403);
     }
     req.user = user;

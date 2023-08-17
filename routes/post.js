@@ -7,7 +7,9 @@ const authenticateToken = require('../middlewares/authenticateToken')
 const router = express.Router();
 
 router.get("/", (req,res) => {
-  res.json("Welcome to Social Media Backend")
+  res
+      .status(200)
+      .json({ message: "Welcome to Social Media Backend" });
 })
 
 // Endpoint to add a new post
@@ -37,7 +39,7 @@ router.post("/api/posts", authenticateToken, async (req, res) => {
       createdAt,
     } = savedPost;
 
-    res.json({
+    res.status(200).json({
       postId: _id,
       title: savedTitle,
       description: savedDescription,
@@ -93,7 +95,7 @@ router.post("/api/like/:id", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "Post not found" });
     }
     // Check if the user has already liked the post
-    if (postToLike.likes.some((like) => like.userid === authenticatedUser.id)) {
+    if (postToLike.likes.find((like) => like.email === authenticatedUser.email)) {
       return res
         .status(400)
         .json({ message: "Post is already liked by the user" });
