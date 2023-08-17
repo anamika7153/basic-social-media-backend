@@ -6,7 +6,7 @@ const dummyUsers = require("../dummydata/dummyUsers");
 const authenticateToken = require('../middlewares/authenticateToken')
 const router = express.Router();
 
-router.get("/", (req,res) => {
+router.get("/api/", (req,res) => {
   res
       .status(200)
       .json({ message: "Welcome to Social Media Backend" });

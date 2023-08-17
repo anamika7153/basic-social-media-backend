@@ -19,7 +19,7 @@ describe("/", () => {
   it("test default API welcome route..", (done) => {
     chai
       .request(app)
-      .get("/")
+      .get("/api/")
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a("object");
