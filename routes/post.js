@@ -15,8 +15,11 @@ router.get("/api/", (req,res) => {
 // Endpoint to add a new post
 router.post("/api/posts", authenticateToken, async (req, res) => {
   const { title, description } = req.body;
-  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); // Modify this to fetch from your database
+  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); 
 
+  if(!title || !description) {
+    return res.sendStatus(400);
+  }
   if (!authenticatedUser) {
     return res.sendStatus(401);
   }
@@ -56,7 +59,7 @@ router.post("/api/posts", authenticateToken, async (req, res) => {
 // Endpoint to delete a post
 router.delete("/api/posts/:id", authenticateToken, async (req, res) => {
   const postId = req.params.id;
-  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); // Modify this to fetch from your database
+  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); 
 
   if (!authenticatedUser) {
     return res.sendStatus(401);
@@ -81,9 +84,10 @@ router.delete("/api/posts/:id", authenticateToken, async (req, res) => {
   }
 });
 
+// Endpoint to like a post
 router.post("/api/like/:id", authenticateToken, async (req, res) => {
   const postId = req.params.id;
-  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); // Modify this to fetch from your database
+  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); 
 
   if (!authenticatedUser) {
     return res.sendStatus(401);
@@ -117,9 +121,10 @@ router.post("/api/like/:id", authenticateToken, async (req, res) => {
   }
 });
 
+// Endpoint to unlike a post
 router.post("/api/unlike/:id", authenticateToken, async (req, res) => {
   const postId = req.params.id;
-  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); // Modify this to fetch from your database
+  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); 
 
   if (!authenticatedUser) {
     return res.sendStatus(401);
@@ -147,10 +152,11 @@ router.post("/api/unlike/:id", authenticateToken, async (req, res) => {
   }
 });
 
+// Endpoint to comment on a post
 router.post("/api/comment/:id", authenticateToken, async (req, res) => {
   const postId = req.params.id;
   const { comment } = req.body;
-  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); // Modify this to fetch from your database
+  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); 
 
   if (!authenticatedUser) {
     return res.sendStatus(401);
@@ -167,7 +173,7 @@ router.post("/api/comment/:id", authenticateToken, async (req, res) => {
       text: comment,
     });
     await postToAddComment.save();
-    const newComment = postToAddComment.comments.slice(-1)[0]; // Get the newly added comment
+    const newComment = postToAddComment.comments.slice(-1)[0]; 
 
     res.json({ commentId: newComment._id });
   } catch (error) {
@@ -178,6 +184,7 @@ router.post("/api/comment/:id", authenticateToken, async (req, res) => {
   }
 });
 
+// Endpoint to get specific post
 router.get("/api/posts/:id", async (req, res) => {
   const postId = req.params.id;
 
@@ -210,8 +217,9 @@ router.get("/api/posts/:id", async (req, res) => {
   }
 });
 
+// Endpoint to get  all posts posted by the user
 router.get("/api/all_posts", authenticateToken, async (req, res) => {
-  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); // Modify this to fetch from your database
+  const authenticatedUser = dummyUsers.find((u) => u.email === req.user.email); 
 
   if (!authenticatedUser) {
     return res.sendStatus(401);
